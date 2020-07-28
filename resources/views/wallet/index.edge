@@ -1,0 +1,54 @@
+@layout('main')
+
+@section('content')
+
+    @if(flashMessage('successMessage'))
+          <div class="alert alert-success mb-4">{{ flashMessage('successMessage') }}</div>
+    @endif
+
+   
+
+    <div class="m-3">Welcome, {{ name }}</div>
+    
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-3 m-4">
+                <div class="card" style="width: 18rem;">
+                    <p class="text-center mt-4">Total Amount Available</p>
+                    <div class="card-body">
+                    <h5 class="card-title">NGN {{ amount[0].amount }}</h5>
+                    <a href="{{ route('/mywallet/topup') }}" class="btn btn-primary">Top Up</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 m-4">
+                <div class="card" style="width: 18rem;">
+                    <p class="text-center mt-4">Total Amount Gifted</p>
+                    <div class="card-body">
+                    <h5 class="card-title">NGN {{ amount[0].gift }}</h5>
+                     <a href="{{ route('/mywallet/gift') }}" class="btn btn-primary">Gift</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 m-4">
+                <div class="card" style="width: 18rem;">
+                    <p class="text-center mt-4">Total Amount Funded/Top ups</p>
+                    <div class="card-body">
+                    <h5 class="card-title">NGN {{ amount[0].topups }}</h5>
+                    
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 m-4">
+                <div class="card" style="width: 18rem;">
+                    <p class="text-center mt-4">Total Amount Recieved</p>
+                    <div class="card-body">
+                    <h5 class="card-title">NGN {{ amount[0].recieve }}</h5>
+                   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@endsection

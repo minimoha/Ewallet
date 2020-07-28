@@ -1,0 +1,32 @@
+@layout('main')
+
+@section('content')
+    
+    <div class="container mt-5">
+        <form action="{{ route('wallet.store') }}" method="POST">
+            {{ csrfField() }}
+
+            
+
+            <div class="form-group">
+            <label for="">Amount</label>
+            <input type="number" name="amount" class="form-control">
+            </div>
+
+            <input type="submit" value="Submit" class="btn btn-primary">
+            
+            <script
+                src = "https://checkout.stripe.com/checkout.js"
+                class = "stripe-button"
+                data-key = "pk_test_51H1qlWIQg7FnFswz1sVBHnRDOoMTGlzVVrvSxEtICfRuBN7HjtB7ozjIOWw47tg6adSwBHcxfNNxIzIhzRXli7ES00iG4dMk8W" 
+            >
+            </script>
+
+            <script>
+                document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
+            </script>
+        </form>
+    </div>
+
+    
+@endsection

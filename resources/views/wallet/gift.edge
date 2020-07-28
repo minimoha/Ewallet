@@ -1,0 +1,29 @@
+@layout('main')
+
+@section('content')
+
+    @if(flashMessage('successMessage'))
+        <div class="alert alert-danger mb-4">{{ flashMessage('successMessage') }}</div>
+    @endif
+    
+    <div class="container mt-5">
+        <form action="{{ route('wallet.transfer') }}" method="POST">
+            {{ csrfField() }}
+
+            <div class="form-group">
+            <label for="">Email</label>
+            <input type="text" name="email" class="form-control">
+            </div>
+
+            <div class="form-group">
+            <label for="">Amount</label>
+            <input type="number" name="amount" class="form-control">
+            </div>
+
+            <input type="submit" value="Submit" class="btn btn-primary">
+           
+        </form>
+    </div>
+
+    
+@endsection

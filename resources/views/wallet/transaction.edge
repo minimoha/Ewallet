@@ -1,0 +1,29 @@
+@layout('main')
+
+@section('content')
+
+    
+    <div class="container mt-5">
+        <h2 class="m-3">My Transactions</h2>
+        <ul class="list-group mb-5">
+            @each(transaction in transactions)
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                @if(transaction.message === 'Sent')
+                <div>
+                  You sent NGN  {{ transaction.amount }} to user with email {{ transaction.username }} on {{ transaction.created_at }}
+                </div>
+                @elseif(transaction.message === 'Recieved')
+                <div>
+                    You recieved NGN  {{ transaction.amount }} from user with email {{ transaction.username }} on {{ transaction.created_at }}
+                </div>
+                @elseif(transaction.message === 'Top up')
+                <div>
+                    You funded your account with NGN  {{ transaction.amount }} on {{ transaction.created_at }}
+                </div>
+                @endif
+              </li>
+            @endeach
+          </ul>
+    </div>
+
+@endsection
